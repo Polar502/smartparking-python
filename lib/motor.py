@@ -11,9 +11,6 @@ import time
 GPIO.setmode(GPIO.BOARD)
 
 def girar(step_pin, dir_pin, orientacion, pasos, intensidad):
-    GPIO.setup(step_pin, GPIO.OUT)
-    GPIO.setup(dir_pin, GPIO.OUT)
-
     # Configuración de la dirección del motor (0 para un sentido, 1 para el sentido contrario)
     if orientacion == 'low':
         GPIO.output(dir_pin, GPIO.LOW)
@@ -26,6 +23,7 @@ def girar(step_pin, dir_pin, orientacion, pasos, intensidad):
         time.sleep(intensidad)  # Ajusta el tiempo según la velocidad deseada
         GPIO.output(step_pin, GPIO.LOW)
         time.sleep(intensidad)
+
 
     # Limpieza de los pines GPIO
     GPIO.cleanup()
